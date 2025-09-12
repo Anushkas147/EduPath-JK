@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Search, Filter, MapPin, Users, DollarSign } from "lucide-react";
+import { Search, Filter, MapPin, Users, DollarSign, University } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,10 +13,29 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Skeleton } from "@/components/ui/skeleton";
 import CollegeCard from "@/components/CollegeCard";
 import collegesData from "@/data/colleges.json";
 import { useLanguage } from "@/components/LanguageSwitcher";
 import { getTranslation } from "@/lib/translations";
+
+type College = {
+  name: string;
+  location: string;
+  fees: string;
+  popular_courses: string[];
+  facilities: string[];
+  hostel: string;
+  ranking?: string;
+  description?: string;
+};
+
+type SavedCollege = {
+  id: string;
+  collegeName: string;
+  location?: string;
+  savedAt: string;
+};
 
 interface FilterState {
   search: string;
@@ -38,12 +57,12 @@ export default function Colleges() {
     facilities: [],
   });
 
-  const { data: savedColleges = [] } = useQuery({
+  const { data: savedColleges = [], isLoading: savedCollegesLoading } = useQuery<SavedCollege[]>({
     queryKey: ["/api/saved/colleges"],
     retry: false,
-  }) as { data: any[] };
+  });
 
-  const savedCollegeNames = (savedColleges || []).map((saved: any) => saved.collegeName);
+  const savedCollegeNames = savedColleges.map((saved) => saved.collegeName);
 
   const filteredColleges = useMemo(() => {
     return collegesData.filter((college) => {
@@ -277,29 +296,71 @@ export default function Colleges() {
               </p>
             </div>
 
-            {filteredColleges.length === 0 ? (
-              <Card>
-                <CardContent className="p-8 text-center">
-                  <h3 className="text-lg font-semibold text-foreground mb-2" data-testid="text-no-results">
-                    No colleges found
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    Try adjusting your filters to see more results.
-                  </p>
-                  <Button onClick={clearFilters} data-testid="button-clear-all-filters">
-                    Clear All Filters
-                  </Button>
-                </CardContent>
-              </Card>
-            ) : (
-              filteredColleges.map((college) => (
-                <CollegeCard
-                  key={college.name}
-                  college={college}
-                  isSaved={savedCollegeNames.includes(college.name)}
-                />
-              ))
-            )}
+            <div aria-live="polite" aria-busy={savedCollegesLoading ? 'true' : 'false'}>
+              {savedCollegesLoading ? (
+                // College Results Loading Skeleton
+                <div className="space-y-6">
+                  {[...Array(6)].map((_, i) => (
+                    <Card key={i}>
+                      <CardContent className="p-6">
+                        <div className="flex flex-col md:flex-row gap-6">
+                          <div className="w-full md:w-24 h-24 bg-muted rounded-lg">
+                            <Skeleton className="w-full h-full" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex flex-col md:flex-row md:items-start justify-between mb-3">
+                              <div className="flex-1">
+                                <Skeleton className="h-6 w-48 mb-2" />
+                                <Skeleton className="h-4 w-32 mb-2" />
+                                <div className="flex items-center gap-4 mb-3">
+                                  <Skeleton className="h-4 w-20" />
+                                  <Skeleton className="h-4 w-24" />
+                                </div>
+                              </div>
+                              <Skeleton className="h-9 w-24" />
+                            </div>
+                            <Skeleton className="h-4 w-full mb-2" />
+                            <Skeleton className="h-4 w-3/4 mb-4" />
+                            <div className="flex flex-wrap gap-2">
+                              <Skeleton className="h-6 w-16" />
+                              <Skeleton className="h-6 w-20" />
+                              <Skeleton className="h-6 w-18" />
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              ) : filteredColleges.length === 0 ? (
+                <Card>
+                  <CardContent className="p-8 text-center">
+                    <div className="text-center py-12">
+                      <University className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                      <h3 className="text-lg font-semibold mb-2" data-testid="text-no-colleges-found">
+                        No colleges found
+                      </h3>
+                      <p className="text-muted-foreground mb-4">
+                        Try adjusting your search criteria or filters. Found {collegesData.length} total colleges in database.
+                      </p>
+                      <Button onClick={clearFilters} variant="outline" data-testid="button-clear-all-filters">
+                        Clear all filters
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ) : (
+                <div className="space-y-6">
+                  {filteredColleges.map((college) => (
+                    <CollegeCard
+                      key={college.name}
+                      college={college}
+                      isSaved={savedCollegeNames.includes(college.name)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Sidebar Filters */}

@@ -14,40 +14,94 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/components/LanguageSwitcher";
 import { getTranslation } from "@/lib/translations";
+
+type UserProfile = {
+  id?: string;
+  age?: number;
+  gender?: 'male' | 'female' | 'other' | 'prefer-not-to-say';
+  currentClass?: '10' | '12' | 'graduate';
+  academicScore?: number;
+  location?: string;
+  interests?: string[];
+  profileCompleted?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+type SavedCollege = {
+  id: string;
+  collegeName: string;
+  location?: string;
+  savedAt: string;
+};
+
+type SavedCourse = {
+  id: string;
+  courseId: string;
+  courseName: string;
+  savedAt: string;
+};
+
+type Assessment = {
+  id: string;
+  assessmentType: string;
+  answers: Record<string, any>;
+  results: Record<string, any>;
+  recommendations?: string[];
+  completedAt: string;
+};
+
+type Activity = {
+  id: string;
+  activityType: string;
+  description: string;
+  metadata?: Record<string, any>;
+  createdAt: string;
+};
+
+type TimelineItem = {
+  id: string;
+  title: string;
+  description: string;
+  dueDate: string;
+  type: 'deadline' | 'reminder' | 'task';
+  completed?: boolean;
+};
 
 export default function Home() {
   const { user } = useAuth();
   const currentLanguage = useLanguage();
 
-  const { data: profile } = useQuery({
+  const { data: profile, isLoading: profileLoading } = useQuery<UserProfile>({
     queryKey: ["/api/profile"],
     retry: false,
   });
 
-  const { data: savedColleges } = useQuery({
+  const { data: savedColleges, isLoading: collegesLoading } = useQuery<SavedCollege[]>({
     queryKey: ["/api/saved/colleges"],
     retry: false,
   });
 
-  const { data: savedCourses } = useQuery({
+  const { data: savedCourses, isLoading: coursesLoading } = useQuery<SavedCourse[]>({
     queryKey: ["/api/saved/courses"],
     retry: false,
   });
 
-  const { data: assessments } = useQuery({
+  const { data: assessments, isLoading: assessmentsLoading } = useQuery<Assessment[]>({
     queryKey: ["/api/assessments"],
     retry: false,
   });
 
-  const { data: activities } = useQuery({
+  const { data: activities, isLoading: activitiesLoading } = useQuery<Activity[]>({
     queryKey: ["/api/activity"],
     retry: false,
   });
 
-  const { data: timeline } = useQuery({
+  const { data: timeline, isLoading: timelineLoading } = useQuery<TimelineItem[]>({
     queryKey: ["/api/timeline"],
     retry: false,
   });
@@ -65,104 +119,138 @@ export default function Home() {
     <div className="pt-20 min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Header */}
-        <Card className="mb-8 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
+        <Card className="mb-8 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20" aria-live="polite">
           <CardContent className="p-6">
-            <div className="flex flex-col md:flex-row md:items-center justify-between">
-              <div>
-                <h1 className="text-3xl font-bold text-foreground mb-2" data-testid="text-welcome">
-                  {getTranslation("welcomeBack", currentLanguage)}, {userName}!
-                </h1>
-                <p className="text-muted-foreground">{getTranslation("dashboardDescription", currentLanguage)}</p>
-                {profile && !profile.profileCompleted && (
-                  <div className="mt-2">
-                    <Badge variant="outline" className="text-amber-600 border-amber-600">
-                      {getTranslation("profileIncomplete", currentLanguage)}
-                    </Badge>
-                  </div>
-                )}
+            {profileLoading ? (
+              <div className="flex flex-col md:flex-row md:items-center justify-between">
+                <div className="flex-1">
+                  <Skeleton className="h-8 w-64 mb-2" />
+                  <Skeleton className="h-4 w-96 mb-2" />
+                  <Skeleton className="h-5 w-32" />
+                </div>
+                <div className="mt-4 md:mt-0 flex gap-3">
+                  <Skeleton className="h-10 w-32" />
+                  <Skeleton className="h-10 w-32" />
+                </div>
               </div>
-              <div className="mt-4 md:mt-0 flex gap-3">
-                <Button asChild data-testid="button-take-assessment">
-                  <Link href="/quiz">
-                    <Star className="w-4 h-4 mr-2" />
-                    {getTranslation("takeAssessment", currentLanguage)}
-                  </Link>
-                </Button>
-                <Button variant="outline" asChild data-testid="button-explore-colleges">
-                  <Link href="/colleges">
-                    <University className="w-4 h-4 mr-2" />
-                    {getTranslation("colleges", currentLanguage)}
-                  </Link>
-                </Button>
+            ) : (
+              <div className="flex flex-col md:flex-row md:items-center justify-between">
+                <div>
+                  <h1 className="text-3xl font-bold text-foreground mb-2" data-testid="text-welcome">
+                    {getTranslation("welcomeBack", currentLanguage)}, {userName}!
+                  </h1>
+                  <p className="text-muted-foreground">{getTranslation("dashboardDescription", currentLanguage)}</p>
+                  {profile && !profile.profileCompleted && (
+                    <div className="mt-2">
+                      <Badge variant="outline" className="text-amber-600 border-amber-600">
+                        {getTranslation("profileIncomplete", currentLanguage)}
+                      </Badge>
+                    </div>
+                  )}
+                </div>
+                <div className="mt-4 md:mt-0 flex gap-3">
+                  <Button asChild data-testid="button-take-assessment">
+                    <Link href="/quiz">
+                      <Star className="w-4 h-4 mr-2" />
+                      {getTranslation("takeAssessment", currentLanguage)}
+                    </Link>
+                  </Button>
+                  <Button variant="outline" asChild data-testid="button-explore-colleges">
+                    <Link href="/colleges">
+                      <University className="w-4 h-4 mr-2" />
+                      {getTranslation("colleges", currentLanguage)}
+                    </Link>
+                  </Button>
+                </div>
               </div>
-            </div>
+            )}
           </CardContent>
         </Card>
 
         {/* Quick Stats */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card data-testid="stat-recommended-colleges">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground text-sm">{getTranslation("recommendedColleges", currentLanguage)}</p>
-                  <p className="text-2xl font-bold text-foreground">12</p>
-                </div>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <University className="text-primary text-xl" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="grid md:grid-cols-4 gap-6 mb-8" aria-live="polite" aria-busy={collegesLoading || coursesLoading || timelineLoading ? 'true' : 'false'}>
+          {collegesLoading || coursesLoading || timelineLoading ? (
+            // Stats Loading Skeleton
+            [...Array(4)].map((_, i) => (
+              <Card key={i}>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <Skeleton className="h-4 w-20 mb-2" />
+                      <Skeleton className="h-8 w-12" />
+                    </div>
+                    <Skeleton className="w-12 h-12 rounded-lg" />
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          ) : (
+            // Stats Content
+            <>
+              <Card data-testid="stat-recommended-colleges">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-muted-foreground text-sm">{getTranslation("recommendedColleges", currentLanguage)}</p>
+                      <p className="text-2xl font-bold text-foreground">12</p>
+                    </div>
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <University className="text-primary text-xl" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-          <Card data-testid="stat-career-paths">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground text-sm">{getTranslation("careerPaths", currentLanguage)}</p>
-                  <p className="text-2xl font-bold text-foreground">8</p>
-                </div>
-                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900 rounded-lg flex items-center justify-center">
-                  <Route className="text-emerald-600 dark:text-emerald-400 text-xl" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              <Card data-testid="stat-career-paths">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-muted-foreground text-sm">{getTranslation("careerPaths", currentLanguage)}</p>
+                      <p className="text-2xl font-bold text-foreground">8</p>
+                    </div>
+                    <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900 rounded-lg flex items-center justify-center">
+                      <Route className="text-emerald-600 dark:text-emerald-400 text-xl" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-          <Card data-testid="stat-saved-items">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground text-sm">{getTranslation("savedItems", currentLanguage)}</p>
-                  <p className="text-2xl font-bold text-foreground">{safeColleges.length + safeCourses.length}</p>
-                </div>
-                <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900 rounded-lg flex items-center justify-center">
-                  <Bookmark className="text-amber-600 dark:text-amber-400 text-xl" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              <Card data-testid="stat-saved-items">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-muted-foreground text-sm">{getTranslation("savedItems", currentLanguage)}</p>
+                      <p className="text-2xl font-bold text-foreground">{safeColleges.length + safeCourses.length}</p>
+                    </div>
+                    <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900 rounded-lg flex items-center justify-center">
+                      <Bookmark className="text-amber-600 dark:text-amber-400 text-xl" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-          <Card data-testid="stat-deadlines">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground text-sm">{getTranslation("upcomingDeadlines", currentLanguage)}</p>
-                  <p className="text-2xl font-bold text-foreground">{safeTimeline.length}</p>
-                </div>
-                <div className="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center">
-                  <Calendar className="text-red-600 dark:text-red-400 text-xl" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              <Card data-testid="stat-deadlines">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-muted-foreground text-sm">{getTranslation("upcomingDeadlines", currentLanguage)}</p>
+                      <p className="text-2xl font-bold text-foreground">{safeTimeline.length}</p>
+                    </div>
+                    <div className="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center">
+                      <Calendar className="text-red-600 dark:text-red-400 text-xl" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </>
+          )}
         </div>
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Personalized Feed */}
           <div className="lg:col-span-2 space-y-6">
-            <Card>
+            <Card aria-live="polite" aria-busy={assessmentsLoading ? 'true' : 'false'}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2" data-testid="text-recommendations-title">
                   <TrendingUp className="w-5 h-5" />
@@ -170,84 +258,106 @@ export default function Home() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {/* Sample College Recommendation */}
-                <Card className="border-l-4 border-l-primary bg-primary/5 dark:bg-primary/10">
-                  <CardContent className="p-4">
-                    <div className="flex items-start justify-between mb-2">
-                      <h4 className="font-semibold text-foreground" data-testid="text-recommended-college">
-                        University of Kashmir
-                      </h4>
-                      <Badge className="bg-primary text-primary-foreground">98% Match</Badge>
-                    </div>
-                    <p className="text-muted-foreground text-sm mb-2">Hazratbal, Srinagar</p>
-                    <p className="text-sm text-foreground mb-3">
-                      Strong programs in Science and Engineering with excellent research facilities.
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <span className="text-xs text-muted-foreground">
-                          <Star className="w-3 h-3 inline text-yellow-500 mr-1" />
-                          NIRF 50-60
-                        </span>
-                        <span className="text-xs text-muted-foreground">₹15K-30K/sem</span>
-                      </div>
-                      <Button variant="link" size="sm" asChild data-testid="button-learn-more">
-                        <Link href="/colleges/University of Kashmir">{getTranslation("learnMore", currentLanguage)}</Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Sample Course Recommendation */}
-                <Card className="border-l-4 border-l-emerald-500 bg-emerald-50 dark:bg-emerald-900/20">
-                  <CardContent className="p-4">
-                    <div className="flex items-start justify-between mb-2">
-                      <h4 className="font-semibold text-foreground" data-testid="text-recommended-course">
-                        B.Sc Computer Science
-                      </h4>
-                      <Badge variant="secondary" className="bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300">
-                        High Demand
-                      </Badge>
-                    </div>
-                    <p className="text-muted-foreground text-sm mb-2">3-Year Undergraduate Program</p>
-                    <p className="text-sm text-foreground mb-3">
-                      Perfect for students interested in programming and software development.
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">Avg. Salary: ₹4-8 LPA</span>
-                      <Button variant="link" size="sm" asChild data-testid="button-explore-career">
-                        <Link href="/courses">{getTranslation("exploreCareerPath", currentLanguage)}</Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Scholarship Alert */}
-                <Card className="border-l-4 border-l-amber-500 bg-amber-50 dark:bg-amber-900/20">
-                  <CardContent className="p-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-8 h-8 bg-amber-100 dark:bg-amber-900 rounded-lg flex items-center justify-center">
-                        <Award className="text-amber-600 dark:text-amber-400 text-sm" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-foreground mb-1" data-testid="text-scholarship-title">
-                          Merit Scholarship Available
-                        </h4>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          J&K State Merit Scholarship - Deadline: March 15, 2025
+                {assessmentsLoading ? (
+                  // Recommendations Loading Skeleton
+                  [...Array(3)].map((_, i) => (
+                    <Card key={i}>
+                      <CardContent className="p-4">
+                        <div className="flex items-start justify-between mb-2">
+                          <Skeleton className="h-5 w-40" />
+                          <Skeleton className="h-5 w-16" />
+                        </div>
+                        <Skeleton className="h-4 w-32 mb-2" />
+                        <Skeleton className="h-4 w-full mb-3" />
+                        <div className="flex items-center justify-between">
+                          <Skeleton className="h-4 w-24" />
+                          <Skeleton className="h-4 w-20" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))
+                ) : (
+                  <>
+                    {/* Sample College Recommendation */}
+                    <Card className="border-l-4 border-l-primary bg-primary/5 dark:bg-primary/10">
+                      <CardContent className="p-4">
+                        <div className="flex items-start justify-between mb-2">
+                          <h4 className="font-semibold text-foreground" data-testid="text-recommended-college">
+                            University of Kashmir
+                          </h4>
+                          <Badge className="bg-primary text-primary-foreground">98% Match</Badge>
+                        </div>
+                        <p className="text-muted-foreground text-sm mb-2">Hazratbal, Srinagar</p>
+                        <p className="text-sm text-foreground mb-3">
+                          Strong programs in Science and Engineering with excellent research facilities.
                         </p>
-                        <Button variant="link" size="sm" className="text-amber-700 dark:text-amber-300 p-0" data-testid="button-apply-scholarship">
-                          Apply Now <ArrowRight className="w-3 h-3 ml-1" />
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-4">
+                            <span className="text-xs text-muted-foreground">
+                              <Star className="w-3 h-3 inline text-yellow-500 mr-1" />
+                              NIRF 50-60
+                            </span>
+                            <span className="text-xs text-muted-foreground">₹15K-30K/sem</span>
+                          </div>
+                          <Button variant="link" size="sm" asChild data-testid="button-learn-more">
+                            <Link href="/colleges/University of Kashmir">{getTranslation("learnMore", currentLanguage)}</Link>
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Sample Course Recommendation */}
+                    <Card className="border-l-4 border-l-emerald-500 bg-emerald-50 dark:bg-emerald-900/20">
+                      <CardContent className="p-4">
+                        <div className="flex items-start justify-between mb-2">
+                          <h4 className="font-semibold text-foreground" data-testid="text-recommended-course">
+                            B.Sc Computer Science
+                          </h4>
+                          <Badge variant="secondary" className="bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300">
+                            High Demand
+                          </Badge>
+                        </div>
+                        <p className="text-muted-foreground text-sm mb-2">3-Year Undergraduate Program</p>
+                        <p className="text-sm text-foreground mb-3">
+                          Perfect for students interested in programming and software development.
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-muted-foreground">Avg. Salary: ₹4-8 LPA</span>
+                          <Button variant="link" size="sm" asChild data-testid="button-explore-career">
+                            <Link href="/courses">{getTranslation("exploreCareerPath", currentLanguage)}</Link>
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Scholarship Alert */}
+                    <Card className="border-l-4 border-l-amber-500 bg-amber-50 dark:bg-amber-900/20">
+                      <CardContent className="p-4">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-amber-100 dark:bg-amber-900 rounded-lg flex items-center justify-center">
+                            <Award className="text-amber-600 dark:text-amber-400 text-sm" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-foreground mb-1" data-testid="text-scholarship-title">
+                              Merit Scholarship Available
+                            </h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              J&K State Merit Scholarship - Deadline: March 15, 2025
+                            </p>
+                            <Button variant="link" size="sm" className="text-amber-700 dark:text-amber-300 p-0" data-testid="button-apply-scholarship">
+                              Apply Now <ArrowRight className="w-3 h-3 ml-1" />
+                            </Button>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </>
+                )}
               </CardContent>
             </Card>
 
             {/* Recent Activity */}
-            <Card>
+            <Card aria-live="polite" aria-busy={activitiesLoading ? 'true' : 'false'}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2" data-testid="text-activity-title">
                   <Clock className="w-5 h-5" />
@@ -255,31 +365,44 @@ export default function Home() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  {safeActivities.length > 0 ? (
-                    safeActivities.slice(0, 5).map((activity, index) => (
-                      <div key={activity.id} className="flex items-center space-x-3" data-testid={`activity-${index}`}>
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <p className="text-sm text-foreground">{activity.description}</p>
-                        <span className="text-xs text-muted-foreground ml-auto">
-                          {new Date(activity.createdAt).toLocaleDateString()}
-                        </span>
+                {activitiesLoading ? (
+                  // Activity Loading Skeleton
+                  <div className="space-y-3">
+                    {[...Array(3)].map((_, i) => (
+                      <div key={i} className="flex items-center space-x-3">
+                        <Skeleton className="w-2 h-2 rounded-full" />
+                        <Skeleton className="h-4 flex-1" />
+                        <Skeleton className="h-3 w-16" />
                       </div>
-                    ))
-                  ) : (
-                    <>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-muted rounded-full"></div>
-                        <p className="text-sm text-muted-foreground">No recent activity</p>
-                      </div>
-                      <div className="text-center py-4">
-                        <Button asChild data-testid="button-start-exploring">
-                          <Link href="/quiz">Start by taking an assessment</Link>
-                        </Button>
-                      </div>
-                    </>
-                  )}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {safeActivities.length > 0 ? (
+                      safeActivities.slice(0, 5).map((activity, index) => (
+                        <div key={activity.id} className="flex items-center space-x-3" data-testid={`activity-${index}`}>
+                          <div className="w-2 h-2 bg-primary rounded-full"></div>
+                          <p className="text-sm text-foreground">{activity.description}</p>
+                          <span className="text-xs text-muted-foreground ml-auto">
+                            {new Date(activity.createdAt).toLocaleDateString()}
+                          </span>
+                        </div>
+                      ))
+                    ) : (
+                      <>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-muted rounded-full"></div>
+                          <p className="text-sm text-muted-foreground">No recent activity</p>
+                        </div>
+                        <div className="text-center py-4">
+                          <Button asChild data-testid="button-start-exploring">
+                            <Link href="/quiz">Start by taking an assessment</Link>
+                          </Button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
@@ -310,35 +433,68 @@ export default function Home() {
             )}
 
             {/* Upcoming Deadlines */}
-            <Card>
+            <Card aria-live="polite" aria-busy={timelineLoading ? 'true' : 'false'}>
               <CardHeader>
                 <CardTitle className="text-lg" data-testid="text-deadlines-title">Upcoming Deadlines</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                    <div className="w-8 h-8 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center">
-                      <Calendar className="text-red-600 dark:text-red-400 w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-foreground" data-testid="text-deadline-cuet">
-                        CUET Registration
-                      </p>
-                      <p className="text-xs text-red-600 dark:text-red-400">Ends in 5 days</p>
-                    </div>
+                {timelineLoading ? (
+                  // Deadlines Loading Skeleton
+                  <div className="space-y-3">
+                    {[...Array(2)].map((_, i) => (
+                      <div key={i} className="flex items-center space-x-3 p-3 bg-muted/10 border border-muted rounded-lg">
+                        <Skeleton className="w-8 h-8 rounded-lg" />
+                        <div className="flex-1">
+                          <Skeleton className="h-4 w-24 mb-1" />
+                          <Skeleton className="h-3 w-16" />
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex items-center space-x-3 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-                    <div className="w-8 h-8 bg-amber-100 dark:bg-amber-900 rounded-lg flex items-center justify-center">
-                      <Calendar className="text-amber-600 dark:text-amber-400 w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-foreground" data-testid="text-deadline-merit">
-                        Merit List Publication
-                      </p>
-                      <p className="text-xs text-amber-600 dark:text-amber-400">In 12 days</p>
-                    </div>
+                ) : (
+                  <div className="space-y-3">
+                    {safeTimeline.length > 0 ? (
+                      safeTimeline.slice(0, 3).map((item, index) => (
+                        <div key={item.id} className="flex items-center space-x-3 p-3 bg-muted/10 border border-muted rounded-lg">
+                          <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Calendar className="text-primary w-4 h-4" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium text-foreground" data-testid={`deadline-${index}`}>
+                              {item.title}
+                            </p>
+                            <p className="text-xs text-muted-foreground">{item.description}</p>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <>
+                        <div className="flex items-center space-x-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                          <div className="w-8 h-8 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center">
+                            <Calendar className="text-red-600 dark:text-red-400 w-4 h-4" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium text-foreground" data-testid="text-deadline-cuet">
+                              CUET Registration
+                            </p>
+                            <p className="text-xs text-red-600 dark:text-red-400">Ends in 5 days</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-3 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+                          <div className="w-8 h-8 bg-amber-100 dark:bg-amber-900 rounded-lg flex items-center justify-center">
+                            <Calendar className="text-amber-600 dark:text-amber-400 w-4 h-4" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium text-foreground" data-testid="text-deadline-merit">
+                              Merit List Publication
+                            </p>
+                            <p className="text-xs text-amber-600 dark:text-amber-400">In 12 days</p>
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </div>
-                </div>
+                )}
               </CardContent>
             </Card>
 
