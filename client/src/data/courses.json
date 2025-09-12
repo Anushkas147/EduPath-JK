@@ -1,0 +1,266 @@
+[
+  {
+    "id": "btech-cse",
+    "name": "B.Tech Computer Science Engineering",
+    "category": "engineering",
+    "duration": "4 years",
+    "type": "undergraduate",
+    "description": "4-year undergraduate program focusing on software development, algorithms, and system design",
+    "career_path": [
+      {
+        "level": "entry",
+        "title": "Entry Level (0-2 years)",
+        "salary_range": "₹3-6 LPA",
+        "positions": ["Software Developer", "Junior Data Analyst", "QA Engineer", "Technical Support"]
+      },
+      {
+        "level": "mid",
+        "title": "Mid Level (3-7 years)", 
+        "salary_range": "₹6-15 LPA",
+        "positions": ["Senior Software Engineer", "Team Lead", "Product Manager", "System Architect"]
+      },
+      {
+        "level": "senior",
+        "title": "Senior Level (8+ years)",
+        "salary_range": "₹15-40+ LPA", 
+        "positions": ["Engineering Manager", "Technical Architect", "CTO/Entrepreneur", "Principal Engineer"]
+      }
+    ],
+    "skills_required": [
+      { "skill": "Programming Languages", "importance": 90 },
+      { "skill": "Data Structures", "importance": 85 },
+      { "skill": "System Design", "importance": 70 },
+      { "skill": "Database Management", "importance": 75 }
+    ],
+    "important_exams": ["JEE Main & Advanced", "BITSAT", "VITEEE", "State CET"],
+    "top_employers": [
+      { "name": "TCS", "logo": "TCS" },
+      { "name": "Infosys", "logo": "I" },
+      { "name": "Wipro", "logo": "W" },
+      { "name": "Accenture", "logo": "A" }
+    ],
+    "avg_starting_salary": "₹4-6 LPA",
+    "job_growth": "22% (High)",
+    "difficulty": "Moderate-High"
+  },
+  {
+    "id": "mbbs",
+    "name": "MBBS (Bachelor of Medicine and Bachelor of Surgery)",
+    "category": "medical",
+    "duration": "5.5 years",
+    "type": "undergraduate",
+    "description": "Comprehensive medical degree program including internship, focusing on human anatomy, physiology, and clinical practice",
+    "career_path": [
+      {
+        "level": "entry",
+        "title": "House Officer/Intern (0-1 year)",
+        "salary_range": "₹2-4 LPA",
+        "positions": ["Medical Intern", "House Officer", "Junior Resident"]
+      },
+      {
+        "level": "mid",
+        "title": "Medical Officer/Specialist (2-8 years)",
+        "salary_range": "₹6-15 LPA",
+        "positions": ["Medical Officer", "Specialist Doctor", "Consultant", "Assistant Professor"]
+      },
+      {
+        "level": "senior",
+        "title": "Senior Consultant/Professor (8+ years)",
+        "salary_range": "₹15-50+ LPA",
+        "positions": ["Senior Consultant", "Professor", "Head of Department", "Medical Superintendent"]
+      }
+    ],
+    "skills_required": [
+      { "skill": "Medical Knowledge", "importance": 95 },
+      { "skill": "Patient Care", "importance": 90 },
+      { "skill": "Communication", "importance": 85 },
+      { "skill": "Critical Thinking", "importance": 80 }
+    ],
+    "important_exams": ["NEET-UG", "NEET-PG", "FMGE (for foreign graduates)"],
+    "top_employers": [
+      { "name": "AIIMS", "logo": "A" },
+      { "name": "Government Hospitals", "logo": "G" },
+      { "name": "Private Hospitals", "logo": "P" },
+      { "name": "Medical Colleges", "logo": "M" }
+    ],
+    "avg_starting_salary": "₹6-10 LPA",
+    "job_growth": "15% (High)",
+    "difficulty": "Very High"
+  },
+  {
+    "id": "bcom",
+    "name": "B.Com (Bachelor of Commerce)",
+    "category": "commerce", 
+    "duration": "3 years",
+    "type": "undergraduate",
+    "description": "Undergraduate program covering accounting, finance, business law, and economics",
+    "career_path": [
+      {
+        "level": "entry",
+        "title": "Entry Level (0-2 years)",
+        "salary_range": "₹2-5 LPA",
+        "positions": ["Accounts Executive", "Sales Executive", "Banking Associate", "Tax Assistant"]
+      },
+      {
+        "level": "mid", 
+        "title": "Mid Level (3-7 years)",
+        "salary_range": "₹5-12 LPA",
+        "positions": ["Accountant", "Financial Analyst", "Branch Manager", "Business Analyst"]
+      },
+      {
+        "level": "senior",
+        "title": "Senior Level (8+ years)",
+        "salary_range": "₹12-30+ LPA",
+        "positions": ["Finance Manager", "CFO", "Business Owner", "Investment Advisor"]
+      }
+    ],
+    "skills_required": [
+      { "skill": "Accounting", "importance": 90 },
+      { "skill": "Financial Analysis", "importance": 85 },
+      { "skill": "Business Communication", "importance": 80 },
+      { "skill": "Tax Knowledge", "importance": 75 }
+    ],
+    "important_exams": ["CA Foundation", "CS Foundation", "CMA Foundation", "Banking Exams"],
+    "top_employers": [
+      { "name": "Banks", "logo": "B" },
+      { "name": "Accounting Firms", "logo": "A" },
+      { "name": "Corporate Companies", "logo": "C" },
+      { "name": "Government Offices", "logo": "G" }
+    ],
+    "avg_starting_salary": "₹3-5 LPA",
+    "job_growth": "10% (Moderate)",
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "ba-english",
+    "name": "B.A English Literature",
+    "category": "arts",
+    "duration": "3 years", 
+    "type": "undergraduate",
+    "description": "Study of English language, literature, poetry, and creative writing from various periods and cultures",
+    "career_path": [
+      {
+        "level": "entry",
+        "title": "Entry Level (0-2 years)",
+        "salary_range": "₹2-4 LPA", 
+        "positions": ["Content Writer", "Junior Teacher", "Editorial Assistant", "Social Media Executive"]
+      },
+      {
+        "level": "mid",
+        "title": "Mid Level (3-7 years)",
+        "salary_range": "₹4-10 LPA",
+        "positions": ["Editor", "Teacher", "Marketing Manager", "Communications Specialist"]
+      },
+      {
+        "level": "senior", 
+        "title": "Senior Level (8+ years)",
+        "salary_range": "₹10-25+ LPA",
+        "positions": ["Principal", "Editor-in-Chief", "Author", "Communications Director"]
+      }
+    ],
+    "skills_required": [
+      { "skill": "Writing", "importance": 95 },
+      { "skill": "Communication", "importance": 90 },
+      { "skill": "Critical Analysis", "importance": 85 },
+      { "skill": "Research", "importance": 80 }
+    ],
+    "important_exams": ["CUET", "State University Entrance", "B.Ed Entrance", "Journalism Entrance"],
+    "top_employers": [
+      { "name": "Schools & Colleges", "logo": "S" },
+      { "name": "Media Houses", "logo": "M" },
+      { "name": "Publishing Houses", "logo": "P" },
+      { "name": "Content Companies", "logo": "C" }
+    ],
+    "avg_starting_salary": "₹2-4 LPA",
+    "job_growth": "8% (Moderate)", 
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "diploma-mechanical",
+    "name": "Diploma in Mechanical Engineering",
+    "category": "vocational",
+    "duration": "3 years",
+    "type": "diploma",
+    "description": "Technical program focusing on mechanical systems, manufacturing, and industrial processes",
+    "career_path": [
+      {
+        "level": "entry",
+        "title": "Entry Level (0-2 years)",
+        "salary_range": "₹2-4 LPA",
+        "positions": ["Junior Technician", "Machine Operator", "Quality Inspector", "Maintenance Assistant"]
+      },
+      {
+        "level": "mid",
+        "title": "Mid Level (3-7 years)",
+        "salary_range": "₹4-8 LPA", 
+        "positions": ["Senior Technician", "Supervisor", "Production Manager", "Design Engineer"]
+      },
+      {
+        "level": "senior",
+        "title": "Senior Level (8+ years)",
+        "salary_range": "₹8-15+ LPA",
+        "positions": ["Plant Manager", "Technical Consultant", "Business Owner", "Department Head"]
+      }
+    ],
+    "skills_required": [
+      { "skill": "Technical Knowledge", "importance": 90 },
+      { "skill": "Problem Solving", "importance": 85 },
+      { "skill": "Manual Skills", "importance": 80 },
+      { "skill": "Safety Procedures", "importance": 75 }
+    ],
+    "important_exams": ["State Polytechnic Entrance", "JEECUP", "Technical Certification Exams"],
+    "top_employers": [
+      { "name": "Manufacturing Units", "logo": "M" },
+      { "name": "Automobile Companies", "logo": "A" },
+      { "name": "Power Plants", "logo": "P" },
+      { "name": "Construction Companies", "logo": "C" }
+    ],
+    "avg_starting_salary": "₹2-4 LPA",
+    "job_growth": "12% (Moderate-High)",
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "bsc-physics",
+    "name": "B.Sc Physics",
+    "category": "science", 
+    "duration": "3 years",
+    "type": "undergraduate",
+    "description": "Study of fundamental principles of physics, including mechanics, thermodynamics, and quantum physics",
+    "career_path": [
+      {
+        "level": "entry",
+        "title": "Entry Level (0-2 years)",
+        "salary_range": "₹2-5 LPA",
+        "positions": ["Lab Assistant", "Junior Teacher", "Research Assistant", "Technical Support"]
+      },
+      {
+        "level": "mid",
+        "title": "Mid Level (3-7 years)",
+        "salary_range": "₹5-12 LPA",
+        "positions": ["Physics Teacher", "Research Scientist", "Data Analyst", "Technical Officer"]
+      },
+      {
+        "level": "senior",
+        "title": "Senior Level (8+ years)", 
+        "salary_range": "₹12-25+ LPA",
+        "positions": ["Principal Scientist", "Professor", "R&D Head", "Technical Consultant"]
+      }
+    ],
+    "skills_required": [
+      { "skill": "Mathematical Analysis", "importance": 90 },
+      { "skill": "Laboratory Skills", "importance": 85 },
+      { "skill": "Research Methods", "importance": 80 },
+      { "skill": "Data Analysis", "importance": 75 }
+    ],
+    "important_exams": ["CUET", "IIT-JAM", "CSIR-NET", "GATE Physics"],
+    "top_employers": [
+      { "name": "Research Institutes", "logo": "R" },
+      { "name": "Educational Institutions", "logo": "E" },
+      { "name": "Tech Companies", "logo": "T" },
+      { "name": "Government Labs", "logo": "G" }
+    ],
+    "avg_starting_salary": "₹3-5 LPA",
+    "job_growth": "7% (Moderate)",
+    "difficulty": "High"
+  }
+]

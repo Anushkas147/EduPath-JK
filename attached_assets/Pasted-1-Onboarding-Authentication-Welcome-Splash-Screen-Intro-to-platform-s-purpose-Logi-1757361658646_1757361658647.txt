@@ -1,0 +1,66 @@
+1. Onboarding & Authentication**
+
+- *Welcome / Splash Screen* – Intro to platform’s purpose.
+- *Login / Signup Page* – Email/password /phone + OTP
+- *Profile Setup Page* – Basic info: Name, Age, Gender, Class (10th/12th)
+class 10 : percentage, class 12 :percentile 
+ Academic interests, Location.
+
+### *2. Dashboard (Main Homepage)*
+
+- Personalized feed showing:
+    - Recommended courses & colleges.
+    - Career guidance cards.
+    - Important admission / scholarship notifications.(optional)
+    
+    ### *3. Aptitude & Interest Assessment*
+    
+    - *Quiz Page* – Simple MCQs about interests, strengths, career preferences.
+    - *Result Page* – Suggested subject streams (Arts/Science/Commerce/Vocational) with based on the quiz allocation system.
+    - *Comparison Page* – Side-by-side comparison of career outcomes from different streams.
+    
+     *4. Course-to-Career Mapping*
+    
+    - *Course Explorer Page* – List of degree programs (B.A., B.Sc., B.Com., etc.).
+    - *Course Detail Page* – Pathways chart:
+        - What jobs/higher studies are possible.
+        - Required skills/exams.
+        - Salary ranges & future prospects.
+    
+    ---
+    
+    ### *5. College Directory*
+    
+    - *Search & Filter Page* – Search nearby government colleges (by location, stream, cutoff, facilities).
+    - *College Detail Page* – Info about programs offered, eligibility, medium of instruction, hostel, labs, etc.
+    - *Map View Page* – Colleges shown on a map (Google Maps integration). (*optional)*
+    
+    ---
+    
+    ### *6. Timeline & Notifications*
+    
+    - *Timeline Tracker Page* – Admission deadlines, scholarship dates, counseling windows.
+    
+    ---
+    
+    ### *7. Personalization & Resources*
+    
+    - *Recommendations Page* – Personalized suggestions for courses, colleges, and careers.
+    - *Study Materials Page* – Free e-books, past papers, open-source content.
+    - *Scholarships Page* – List of scholarships, eligibility, and application links.
+    
+    ---
+    
+    ### *8. User Profile & Settings*
+    
+    - *My Profile Page* – View/update personal details, interests, progress.
+    - *Saved Items Page* – Saved courses, colleges, scholarships.
+    - *Settings Page* – Language preference, accessibility (offline mode, dark mode), notification settings.
+    
+    ---
+    
+     *9. Feedback & Support*
+    
+    - *Help Center Page* – FAQs, guides on how to use the platform.
+    - *Counselor Connect Page* – Chat or schedule call with teacher/NGO counselor.
+    - *Feedback Page* – Students can submit feedback about app experience.

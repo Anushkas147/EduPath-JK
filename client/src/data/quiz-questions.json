@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "question": "What type of activities do you enjoy most in your free time?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "Conducting experiments, solving math problems, or working with technology",
+        "weights": { "science": 3, "engineering": 3, "medical": 1, "commerce": 0, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "b", 
+        "text": "Reading, writing, creating art, or studying history and culture",
+        "weights": { "science": 0, "engineering": 0, "medical": 0, "commerce": 1, "arts": 3, "vocational": 0 }
+      },
+      {
+        "id": "c",
+        "text": "Managing finances, starting small businesses, or analyzing market trends", 
+        "weights": { "science": 0, "engineering": 1, "medical": 0, "commerce": 3, "arts": 1, "vocational": 1 }
+      },
+      {
+        "id": "d",
+        "text": "Hands-on activities like crafting, repairing, or building things",
+        "weights": { "science": 1, "engineering": 2, "medical": 0, "commerce": 0, "arts": 1, "vocational": 3 }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Which subject did you find most interesting in school?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mathematics and Physics",
+        "weights": { "science": 3, "engineering": 3, "medical": 2, "commerce": 1, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "b",
+        "text": "Biology and Chemistry", 
+        "weights": { "science": 3, "engineering": 1, "medical": 3, "commerce": 0, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "c",
+        "text": "History and Literature",
+        "weights": { "science": 0, "engineering": 0, "medical": 0, "commerce": 1, "arts": 3, "vocational": 0 }
+      },
+      {
+        "id": "d",
+        "text": "Economics and Business Studies",
+        "weights": { "science": 0, "engineering": 1, "medical": 0, "commerce": 3, "arts": 1, "vocational": 1 }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What kind of work environment appeals to you most?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "Laboratory or research facility",
+        "weights": { "science": 3, "engineering": 2, "medical": 3, "commerce": 0, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "b",
+        "text": "Office with computers and business meetings",
+        "weights": { "science": 1, "engineering": 2, "medical": 0, "commerce": 3, "arts": 1, "vocational": 0 }
+      },
+      {
+        "id": "c", 
+        "text": "Creative studio or cultural institution",
+        "weights": { "science": 0, "engineering": 0, "medical": 0, "commerce": 1, "arts": 3, "vocational": 1 }
+      },
+      {
+        "id": "d",
+        "text": "Workshop or field work",
+        "weights": { "science": 1, "engineering": 2, "medical": 1, "commerce": 0, "arts": 0, "vocational": 3 }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Which of these activities would you find most rewarding?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "Discovering a scientific breakthrough or inventing something new",
+        "weights": { "science": 3, "engineering": 3, "medical": 2, "commerce": 0, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "b",
+        "text": "Helping people recover from illness or injury",
+        "weights": { "science": 2, "engineering": 0, "medical": 3, "commerce": 0, "arts": 1, "vocational": 1 }
+      },
+      {
+        "id": "c",
+        "text": "Creating a successful business or financial strategy", 
+        "weights": { "science": 0, "engineering": 1, "medical": 0, "commerce": 3, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "d",
+        "text": "Creating art, music, or literature that inspires others",
+        "weights": { "science": 0, "engineering": 0, "medical": 0, "commerce": 0, "arts": 3, "vocational": 1 }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "How do you prefer to solve problems?",
+    "type": "single", 
+    "options": [
+      {
+        "id": "a",
+        "text": "Using logical analysis and systematic methods",
+        "weights": { "science": 3, "engineering": 3, "medical": 2, "commerce": 2, "arts": 1, "vocational": 1 }
+      },
+      {
+        "id": "b",
+        "text": "Through creative and innovative approaches",
+        "weights": { "science": 2, "engineering": 2, "medical": 1, "commerce": 1, "arts": 3, "vocational": 2 }
+      },
+      {
+        "id": "c",
+        "text": "By collaborating and discussing with others",
+        "weights": { "science": 1, "engineering": 1, "medical": 2, "commerce": 2, "arts": 2, "vocational": 1 }
+      },
+      {
+        "id": "d",
+        "text": "Through hands-on trial and experimentation",
+        "weights": { "science": 2, "engineering": 3, "medical": 2, "commerce": 0, "arts": 1, "vocational": 3 }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What motivates you the most?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "Understanding how things work and making discoveries",
+        "weights": { "science": 3, "engineering": 3, "medical": 2, "commerce": 0, "arts": 1, "vocational": 1 }
+      },
+      {
+        "id": "b",
+        "text": "Helping others and making a positive impact on society",
+        "weights": { "science": 1, "engineering": 1, "medical": 3, "commerce": 1, "arts": 2, "vocational": 2 }
+      },
+      {
+        "id": "c",
+        "text": "Financial success and business achievement",
+        "weights": { "science": 0, "engineering": 1, "medical": 1, "commerce": 3, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "d",
+        "text": "Self-expression and creative fulfillment",
+        "weights": { "science": 0, "engineering": 1, "medical": 0, "commerce": 1, "arts": 3, "vocational": 2 }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Which type of books or media do you prefer?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "Science magazines, documentaries, and technical journals",
+        "weights": { "science": 3, "engineering": 2, "medical": 2, "commerce": 0, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "b",
+        "text": "Novels, poetry, and artistic content",
+        "weights": { "science": 0, "engineering": 0, "medical": 0, "commerce": 1, "arts": 3, "vocational": 0 }
+      },
+      {
+        "id": "c",
+        "text": "Business news, economics, and financial publications",
+        "weights": { "science": 0, "engineering": 1, "medical": 0, "commerce": 3, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "d",
+        "text": "DIY guides, practical manuals, and how-to content",
+        "weights": { "science": 1, "engineering": 2, "medical": 1, "commerce": 1, "arts": 1, "vocational": 3 }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "In group projects, what role do you usually take?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "The researcher who gathers and analyzes information",
+        "weights": { "science": 3, "engineering": 2, "medical": 2, "commerce": 1, "arts": 2, "vocational": 1 }
+      },
+      {
+        "id": "b",
+        "text": "The leader who organizes and manages the team",
+        "weights": { "science": 1, "engineering": 2, "medical": 2, "commerce": 3, "arts": 1, "vocational": 2 }
+      },
+      {
+        "id": "c",
+        "text": "The creative person who comes up with innovative ideas",
+        "weights": { "science": 2, "engineering": 2, "medical": 1, "commerce": 1, "arts": 3, "vocational": 2 }
+      },
+      {
+        "id": "d",
+        "text": "The implementer who puts ideas into practical action",
+        "weights": { "science": 1, "engineering": 3, "medical": 2, "commerce": 2, "arts": 1, "vocational": 3 }
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What type of career stability do you prefer?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "Stable job with consistent research opportunities",
+        "weights": { "science": 3, "engineering": 2, "medical": 3, "commerce": 1, "arts": 1, "vocational": 2 }
+      },
+      {
+        "id": "b",
+        "text": "Dynamic business environment with growth potential",
+        "weights": { "science": 0, "engineering": 2, "medical": 1, "commerce": 3, "arts": 1, "vocational": 1 }
+      },
+      {
+        "id": "c",
+        "text": "Flexible creative work with artistic freedom",
+        "weights": { "science": 0, "engineering": 1, "medical": 0, "commerce": 1, "arts": 3, "vocational": 2 }
+      },
+      {
+        "id": "d",
+        "text": "Practical work with tangible results and job security",
+        "weights": { "science": 1, "engineering": 2, "medical": 2, "commerce": 2, "arts": 0, "vocational": 3 }
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Which of these skills comes most naturally to you?",
+    "type": "single",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mathematical calculations and logical reasoning",
+        "weights": { "science": 3, "engineering": 3, "medical": 2, "commerce": 2, "arts": 0, "vocational": 1 }
+      },
+      {
+        "id": "b",
+        "text": "Communication and interpersonal relationships",
+        "weights": { "science": 1, "engineering": 1, "medical": 2, "commerce": 2, "arts": 3, "vocational": 1 }
+      },
+      {
+        "id": "c",
+        "text": "Organization and strategic planning",
+        "weights": { "science": 1, "engineering": 2, "medical": 2, "commerce": 3, "arts": 1, "vocational": 2 }
+      },
+      {
+        "id": "d",
+        "text": "Manual dexterity and practical skills",
+        "weights": { "science": 1, "engineering": 2, "medical": 2, "commerce": 0, "arts": 2, "vocational": 3 }
+      }
+    ]
+  }
+]

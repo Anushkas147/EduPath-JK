@@ -1,0 +1,623 @@
+[
+    {
+        "name": "Government Degree College Anantnag",
+        "location": "Khanabal, Anantnag",
+        "cutoff": "Moderate to competitive",
+        "facilities": [
+            "Library",
+            "Labs",
+            "Wheelchair Access"
+        ],
+        "fees": "₹10,000-₹15,000 per semester (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Computer Science",
+            "Economics",
+            "Political Science",
+            "Sociology",
+            "History",
+            "Mathematics",
+            "Botany"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Gandhi Memorial Science College, Jammu",
+        "location": "Canal Rd, Nawabad, Jammu",
+        "cutoff": "Moderate to high",
+        "facilities": [
+            "Labs",
+            "Library",
+            "Wheelchair Access"
+        ],
+        "fees": "₹15,000 per semester (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "B.Sc Medical",
+            "B.Sc Non-Medical",
+            "BCA",
+            "B.Com",
+            "BBA",
+            "Biotechnology",
+            "Microbiology",
+            "Environmental Science",
+            "Physics",
+            "Chemistry",
+            "Mathematics"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Amar Singh College, Srinagar",
+        "location": "Gogji Bagh, Jawahar Nagar",
+        "cutoff": "Competitive",
+        "facilities": [
+            "Parking",
+            "Labs",
+            "Wheelchair Access"
+        ],
+        "fees": "₹10,000 per semester (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "BCA",
+            "Sociology",
+            "English",
+            "Environmental Science",
+            "Mathematics",
+            "Computer Applications",
+            "History"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Central University of Kashmir",
+        "location": "Tulmulla, Kashmir",
+        "facilities": [
+            "Research Labs",
+            "Library",
+            "Hostels",
+            "Sports"
+        ],
+        "fees": "₹20,000 per semester (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "M.A",
+            "M.Sc",
+            "PhD",
+            "Computer Science",
+            "Economics",
+            "Political Science",
+            "Social Work",
+            "History",
+            "Management",
+            "Law"
+        ],
+        "nirf": "100-150 range"
+    },
+    {
+        "name": "Cluster University of Jammu",
+        "location": "Canal Rd, Nawabad, Jammu",
+        "facilities": [
+            "Labs",
+            "Library",
+            "Hostels"
+        ],
+        "fees": "₹15,000 per semester (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Computer Science",
+            "Management",
+            "Sociology",
+            "History",
+            "Political Science",
+            "Mathematics",
+            "Biotechnology"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. College for Women Nawakadal",
+        "location": "Nawa Kadal Rd, Srinagar",
+        "facilities": [
+            "Library",
+            "Labs",
+            "Wheelchair Access"
+        ],
+        "fees": "₹8,000-₹10,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Computer Science",
+            "Home Science",
+            "Political Science",
+            "Sociology",
+            "Mathematics",
+            "Environmental Science",
+            "English"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Government Medical College, Srinagar",
+        "location": "Srinagar",
+        "cutoff": "NEET ~2000-3000 (State quota)",
+        "facilities": [
+            "Hospital",
+            "Labs",
+            "Research"
+        ],
+        "fees": "₹60,000 per year (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS",
+            "Nursing",
+            "Allied courses"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "AIIMS Jammu",
+        "location": "Vijaypur, Jammu",
+        "cutoff": "NEET ~3000-4000 rank",
+        "facilities": [
+            "Hospital",
+            "Research Labs",
+            "Library",
+            "Hostel"
+        ],
+        "fees": "Govt regulated",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS",
+            "Nursing",
+            "Paramedical"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "Government Medical College, Anantnag",
+        "location": "Anantnag",
+        "cutoff": "NEET ~5000-10000 rank",
+        "facilities": [
+            "Hospital",
+            "Labs"
+        ],
+        "fees": "₹60,000 per year (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "Government Medical College, Baramulla",
+        "location": "Baramulla",
+        "cutoff": "NEET ~6000-11000 rank",
+        "facilities": [
+            "Hospital",
+            "Labs"
+        ],
+        "fees": "₹60,000 per year (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "Government Medical College, Kathua",
+        "location": "Kathua",
+        "cutoff": "NEET ~7000-12000 rank",
+        "facilities": [
+            "Hospital",
+            "Labs"
+        ],
+        "fees": "₹60,000 per year (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "Government Medical College, Rajouri",
+        "location": "Rajouri",
+        "cutoff": "NEET ~8000-14000 rank",
+        "facilities": [
+            "Hospital",
+            "Labs"
+        ],
+        "fees": "₹60,000 per year (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "Government Medical College, Udhampur",
+        "location": "Udhampur",
+        "cutoff": "NEET ~10000-16000 rank",
+        "facilities": [
+            "Hospital",
+            "Labs"
+        ],
+        "fees": "₹60,000 per year (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "Government Medical College, Doda",
+        "location": "Doda",
+        "cutoff": "NEET ~12000-17000 rank",
+        "facilities": [
+            "Hospital",
+            "Labs"
+        ],
+        "fees": "₹60,000 per year (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "Government Medical College, Handwara",
+        "location": "Handwara",
+        "cutoff": "NEET ~12000-17000 rank",
+        "facilities": [
+            "Hospital",
+            "Labs"
+        ],
+        "fees": "₹60,000 per year (approx.)",
+        "hostel": "Available",
+        "popular_courses": [
+            "MBBS",
+            "MD",
+            "MS"
+        ],
+        "nirf": "Not applicable"
+    },
+    {
+        "name": "Government College of Engineering and Technology, Jammu",
+        "location": "Jammu",
+        "facilities": [
+            "Labs",
+            "Hostels",
+            "Library"
+        ],
+        "fees": "₹40,000-₹50,000 per semester",
+        "hostel": "Available",
+        "popular_courses": [
+            "Civil Engineering",
+            "Mechanical Engineering",
+            "Electrical Engineering",
+            "Computer Science Engineering",
+            "Electronics",
+            "Information Technology"
+        ],
+        "nirf": "150-200 range"
+    },
+    {
+        "name": "NIT Srinagar",
+        "location": "Srinagar",
+        "facilities": [
+            "Hostels",
+            "Labs",
+            "Sports",
+            "WiFi"
+        ],
+        "fees": "₹1.4-1.5 lakh per year",
+        "hostel": "Available",
+        "popular_courses": [
+            "B.Tech",
+            "M.Tech",
+            "PhD in Engineering Streams"
+        ],
+        "nirf": "70-80 range"
+    },
+    {
+        "name": "Shri Mata Vaishno Devi University",
+        "location": "Katra, Jammu",
+        "facilities": [
+            "Campus Hostels",
+            "Labs",
+            "Sports"
+        ],
+        "fees": "₹40,000-₹60,000 per semester",
+        "hostel": "Available",
+        "popular_courses": [
+            "Engineering",
+            "Science",
+            "Management"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Islamic University of Science and Technology",
+        "location": "Awantipora, Pulwama",
+        "facilities": [
+            "Labs",
+            "Library",
+            "Sports",
+            "Hostels"
+        ],
+        "fees": "₹30,000-₹50,000 per semester",
+        "hostel": "Available",
+        "popular_courses": [
+            "Engineering",
+            "Computer Applications",
+            "Management",
+            "Science"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "University of Jammu",
+        "location": "Baba Saheb Ambedkar Road, Jammu",
+        "facilities": [
+            "Library",
+            "Research Labs",
+            "Sports",
+            "Hostel"
+        ],
+        "fees": "₹20,000-₹40,000 per semester",
+        "hostel": "Available",
+        "popular_courses": [
+            "Arts",
+            "Science",
+            "Engineering",
+            "Management",
+            "Law",
+            "Education"
+        ],
+        "nirf": "90-100 range"
+    },
+    {
+        "name": "University of Kashmir",
+        "location": "Hazratbal, Srinagar",
+        "facilities": [
+            "Research Labs",
+            "Library",
+            "Sports",
+            "Hostels"
+        ],
+        "fees": "₹15,000-₹30,000 per semester",
+        "hostel": "Available",
+        "popular_courses": [
+            "Humanities",
+            "Science",
+            "Social Science",
+            "Engineering",
+            "Law",
+            "Management"
+        ],
+        "nirf": "50-60 range"
+    },
+    {
+        "name": "Sher-e-Kashmir University of Agricultural Sciences and Technology (SKUAST)",
+        "location": "Shalimar, Srinagar",
+        "facilities": [
+            "Research Farms",
+            "Labs",
+            "Library",
+            "Hostels"
+        ],
+        "fees": "₹25,000-₹50,000 per semester",
+        "hostel": "Available",
+        "popular_courses": [
+            "Agriculture",
+            "Veterinary Science",
+            "Horticulture",
+            "Fisheries"
+        ],
+        "nirf": "100-150 range"
+    },
+    {
+        "name": "Govt. Degree College Bhaderwah",
+        "location": "Bhaderwah, Doda",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Computer Science"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Kishtwar",
+        "location": "Kishtwar",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Political Science"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Poonch",
+        "location": "Poonch",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "History",
+            "Mathematics"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Rajouri",
+        "location": "Rajouri",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Economics",
+            "Computer Science"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Baramulla",
+        "location": "Baramulla",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "English",
+            "History"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Sopore",
+        "location": "Sopore",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Political Science",
+            "Computer Applications"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Pulwama",
+        "location": "Pulwama",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Sociology",
+            "Economics"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Kupwara",
+        "location": "Kupwara",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Mathematics",
+            "History"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Doda",
+        "location": "Doda",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "Political Science"
+        ],
+        "nirf": "Not listed"
+    },
+    {
+        "name": "Govt. Degree College Ramban",
+        "location": "Ramban",
+        "facilities": [
+            "Library",
+            "Labs"
+        ],
+        "fees": "₹8,000-₹12,000 per semester",
+        "hostel": "Limited",
+        "popular_courses": [
+            "B.A",
+            "B.Sc",
+            "B.Com",
+            "English",
+            "History"
+        ],
+        "nirf": "Not listed"
+    }
+]

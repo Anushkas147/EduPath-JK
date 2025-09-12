@@ -1,0 +1,65 @@
+I have a React + Firebase project with a quiz system. 
+I already have `quiz_questions_full.json` in `frontend/public/data` (60 English questions). 
+I want to add multilingual support with a Language Switcher and quiz translation.
+
+Please do the following:
+
+1. In backend/, create a new script `translate.js`:
+   - Read `quiz_questions_full.json`
+   - Use Google Cloud Translation API to translate each question text and option text into:
+     - Hindi (hi)
+     - Marathi (mr)
+     - Urdu (ur)
+     - Punjabi (pa)
+   - For Kashmiri (ks) and Dogri (doi), insert placeholders like:
+     "TODO - Kashmiri translation"
+     "TODO - Dogri translation"
+   - Save the output as `quiz_questions_multi.json` inside `frontend/public/data/`.
+
+   The structure must look like this:
+   {
+     "id": 1,
+     "text": {
+       "en": "Do you enjoy solving math problems?",
+       "hi": "क्या आपको गणित के सवाल हल करना पसंद है?",
+       "mr": "तुला गणिताचे प्रश्न सोडवायला आवडतात का?",
+       "ur": "کیا آپ کو ریاضی کے مسائل حل کرنا پسند ہے؟",
+       "pa": "ਕੀ ਤੁਹਾਨੂੰ ਗਣਿਤ ਦੇ ਪ੍ਰਸ਼ਨ ਹੱਲ ਕਰਨੇ ਪਸੰਦ ਹਨ?",
+       "ks": "TODO - Kashmiri translation",
+       "doi": "TODO - Dogri translation"
+     },
+     "options": [
+       {
+         "text": {
+           "en": "Yes, very much",
+           "hi": "हाँ, बहुत ज़्यादा",
+           "mr": "हो, खूप आवडते",
+           "ur": "جی ہاں، بہت زیادہ",
+           "pa": "ਹਾਂ, ਬਹੁਤ ਜ਼ਿਆਦਾ",
+           "ks": "TODO - Kashmiri translation",
+           "doi": "TODO - Dogri translation"
+         },
+         "stream": ["Engineering", "Science"]
+       }
+     ]
+   }
+
+2. Create a new component `src/components/LanguageSwitcher.jsx`:
+   - A <select> dropdown with options:
+     English (en), हिन्दी (hi), मराठी (mr), اردو (ur), ਪੰਜਾਬੀ (pa), کٲشُر (Kashmiri) (ks), डोगरी (doi)
+   - On change, call i18n.changeLanguage(lng) and save the choice in localStorage.
+
+3. Update `src/components/Navbar.jsx` to include this LanguageSwitcher on the right side.
+
+4. Update `src/pages/QuizPage.jsx`:
+   - Import quiz_questions_multi.json
+   - Create a helper function getText(obj):
+       If obj[i18n.language] exists and does not start with "TODO", return it.
+       Otherwise fallback to obj["en"].
+   - Render questions and options using getText() instead of always using English.
+
+5. Do not modify resultSystem.js or any quiz logic.
+   Only add the translate.js script, LanguageSwitcher, Navbar integration, and update QuizPage rendering.
+
+I will upload my gcp-key.json for Google Translate API credentials. 
+Use that to authenticate when running translate.js.
