@@ -1,15 +1,6 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import ws from "ws";
+import { Pool } from 'pg';
+import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from "@shared/schema";
-
-neonConfig.webSocketConstructor = ws;
-
-// Configure to handle SSL certificate issues in development
-if (process.env.NODE_ENV === 'development') {
-  neonConfig.useSecureWebSocket = false;
-  neonConfig.pipelineConnect = false;
-}
 
 let pool: Pool | null = null;
 let db: any = null;
@@ -32,15 +23,15 @@ if (process.env.DATABASE_URL) {
   try {
     pool = new Pool({ 
       connectionString: process.env.DATABASE_URL,
-      ssl: process.env.NODE_ENV === 'production' 
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
     });
-    db = drizzle({ client: pool, schema });
+    db = drizzle(pool, { schema });
     
     // Test the connection
     testDatabaseConnection().then(healthy => {
       isDbHealthy = healthy;
       if (healthy) {
-        console.log('✅ Connected to Neon PostgreSQL database');
+        console.log('✅ Connected to PostgreSQL database');
       } else {
         console.log('⚠️  Database connection unhealthy, using fallback storage');
         pool = null;
