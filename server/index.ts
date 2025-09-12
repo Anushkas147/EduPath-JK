@@ -7,6 +7,16 @@ import { setupVite, serveStatic, log } from "./vite";
 // Set development defaults for environment variables
 if (process.env.NODE_ENV === 'development') {
   process.env.JWT_SECRET = process.env.JWT_SECRET || 'dev-jwt-secret-key-for-testing';
+} else if (process.env.NODE_ENV === 'production') {
+  // In production, fail if critical environment variables are missing
+  if (!process.env.JWT_SECRET) {
+    console.error('❌ JWT_SECRET is required in production');
+    process.exit(1);
+  }
+  if (!process.env.DATABASE_URL) {
+    console.error('❌ DATABASE_URL is required in production');
+    process.exit(1);
+  }
 }
 
 const app = express();

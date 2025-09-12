@@ -23,7 +23,7 @@ if (process.env.DATABASE_URL) {
   try {
     pool = new Pool({ 
       connectionString: process.env.DATABASE_URL,
-      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+      ssl: process.env.NODE_ENV === 'production'
     });
     db = drizzle(pool, { schema });
     
@@ -34,17 +34,29 @@ if (process.env.DATABASE_URL) {
         console.log('✅ Connected to PostgreSQL database');
       } else {
         console.log('⚠️  Database connection unhealthy, using fallback storage');
+        if (process.env.NODE_ENV === 'production') {
+          console.error('❌ Database connection failed in production. Exiting.');
+          process.exit(1);
+        }
         pool = null;
         db = null;
       }
     }).catch(() => {
       console.log('⚠️  Database connection failed, using fallback storage');
       isDbHealthy = false;
+      if (process.env.NODE_ENV === 'production') {
+        console.error('❌ Database connection failed in production. Exiting.');
+        process.exit(1);
+      }
       pool = null;
       db = null;
     });
   } catch (error) {
     console.error('❌ Failed to connect to database:', error);
+    if (process.env.NODE_ENV === 'production') {
+      console.error('❌ Database initialization failed in production. Exiting.');
+      process.exit(1);
+    }
     pool = null;
     db = null;
     isDbHealthy = false;
