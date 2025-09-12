@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { useAuth } from "@/hooks/useAuth";
 import Navigation from "@/components/Navigation";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 // Pages
 import Landing from "@/pages/Landing";
@@ -54,7 +55,24 @@ function Router() {
             <Route path="/colleges" component={Colleges} />
             <Route path="/colleges/:name" component={CollegeDetail} />
             <Route path="/courses" component={Courses} />
-            <Route path="/profile" component={Profile} />
+            <Route path="/profile">
+              <ErrorBoundary fallback={
+                <div className="pt-20 min-h-screen bg-background flex items-center justify-center">
+                  <div className="text-center">
+                    <h2 className="text-xl font-semibold mb-2">Profile temporarily unavailable</h2>
+                    <p className="text-muted-foreground mb-4">Please try refreshing the page</p>
+                    <button 
+                      onClick={() => window.location.reload()} 
+                      className="px-4 py-2 bg-primary text-primary-foreground rounded-md"
+                    >
+                      Refresh
+                    </button>
+                  </div>
+                </div>
+              }>
+                <Profile />
+              </ErrorBoundary>
+            </Route>
           </>
         )}
         <Route component={NotFound} />
@@ -68,8 +86,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
-          <Toaster />
-          <Router />
+          <ErrorBoundary>
+            <Toaster />
+            <Router />
+          </ErrorBoundary>
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>

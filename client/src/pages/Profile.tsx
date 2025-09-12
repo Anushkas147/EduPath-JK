@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { useForm } from "react-hook-form";
@@ -51,6 +51,50 @@ const profileUpdateSchema = z.object({
 
 type ProfileUpdateData = z.infer<typeof profileUpdateSchema>;
 
+type UserProfile = {
+  id?: string;
+  age?: number;
+  gender?: 'male' | 'female' | 'other' | 'prefer-not-to-say';
+  currentClass?: '10' | '12' | 'graduate';
+  academicScore?: number;
+  location?: string;
+  interests?: string[];
+  profileCompleted?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+type SavedCollege = {
+  id: string;
+  collegeName: string;
+  location?: string;
+  savedAt: string;
+};
+
+type SavedCourse = {
+  id: string;
+  courseId: string;
+  courseName: string;
+  savedAt: string;
+};
+
+type Assessment = {
+  id: string;
+  assessmentType: string;
+  answers: Record<string, any>;
+  results: Record<string, any>;
+  recommendations?: string[];
+  completedAt: string;
+};
+
+type Activity = {
+  id: string;
+  activityType: string;
+  description: string;
+  metadata?: Record<string, any>;
+  createdAt: string;
+};
+
 const districts = [
   'srinagar', 'jammu', 'anantnag', 'baramulla', 'kathua', 
   'udhampur', 'doda', 'rajouri', 'poonch', 'pulwama',
@@ -69,22 +113,22 @@ export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
 
-  const { data: profile, isLoading: profileLoading } = useQuery({
+  const { data: profile, isLoading: profileLoading, error: profileError } = useQuery<UserProfile>({
     queryKey: ["/api/profile"],
     retry: false,
   });
 
-  const { data: savedColleges } = useQuery({
+  const { data: savedColleges } = useQuery<SavedCollege[]>({
     queryKey: ["/api/saved/colleges"],
     retry: false,
   });
 
-  const { data: savedCourses } = useQuery({
+  const { data: savedCourses } = useQuery<SavedCourse[]>({
     queryKey: ["/api/saved/courses"],
     retry: false,
   });
 
-  const { data: assessments } = useQuery({
+  const { data: assessments } = useQuery<Assessment[]>({
     queryKey: ["/api/assessments"],
     retry: false,
   });
@@ -94,7 +138,7 @@ export default function Profile() {
   const safeCourses = Array.isArray(savedCourses) ? savedCourses : [];
   const safeAssessments = Array.isArray(assessments) ? assessments : [];
 
-  const { data: activities = [] } = useQuery({
+  const { data: activities = [] } = useQuery<Activity[]>({
     queryKey: ["/api/activity"],
     retry: false,
   });
@@ -154,7 +198,7 @@ export default function Profile() {
   });
 
   // Initialize form when profile data is loaded
-  useState(() => {
+  useEffect(() => {
     if (profile) {
       reset({
         age: profile.age || undefined,
@@ -166,7 +210,7 @@ export default function Profile() {
       });
       setSelectedInterests(profile.interests || []);
     }
-  });
+  }, [profile, reset]);
 
   const handleInterestChange = (interest: string, checked: boolean) => {
     if (checked) {
@@ -197,8 +241,8 @@ export default function Profile() {
 
   const calculateProfileCompletion = () => {
     if (!profile) return 0;
-    const fields = ['age', 'gender', 'currentClass', 'academicScore', 'location'];
-    const filledFields = fields.filter(field => profile[field] !== null && profile[field] !== undefined);
+    const fields: (keyof UserProfile)[] = ['age', 'gender', 'currentClass', 'academicScore', 'location'];
+    const filledFields = fields.filter(field => profile[field] !== null && profile[field] !== undefined && profile[field] !== '');
     const interestsFilled = profile.interests && profile.interests.length > 0 ? 1 : 0;
     return Math.round(((filledFields.length + interestsFilled) / (fields.length + 1)) * 100);
   };
