@@ -74,7 +74,15 @@ export default function ProfileSetup() {
         title: "Profile Updated",
         description: "Your profile has been successfully updated.",
       });
-      setLocation("/");
+      
+      // Check for stored return path and navigate there, otherwise go home
+      const returnPath = sessionStorage.getItem('profileReturnPath');
+      if (returnPath) {
+        sessionStorage.removeItem('profileReturnPath');
+        setLocation(returnPath);
+      } else {
+        setLocation("/");
+      }
     },
     onError: (error: Error) => {
       toast({

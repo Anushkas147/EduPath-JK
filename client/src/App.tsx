@@ -22,6 +22,9 @@ import Courses from "@/pages/Courses";
 import Profile from "@/pages/Profile";
 import NotFound from "@/pages/not-found";
 
+// Components
+import ProfileGuard from "@/components/ProfileGuard";
+
 function Router() {
   const { isAuthenticated, isLoading, user } = useAuth();
 
@@ -50,8 +53,16 @@ function Router() {
           <>
             <Route path="/" component={Home} />
             <Route path="/profile-setup" component={ProfileSetup} />
-            <Route path="/quiz" component={Quiz} />
-            <Route path="/quiz/results" component={QuizResults} />
+            <Route path="/quiz">
+              <ProfileGuard>
+                <Quiz />
+              </ProfileGuard>
+            </Route>
+            <Route path="/quiz/results">
+              <ProfileGuard>
+                <QuizResults />
+              </ProfileGuard>
+            </Route>
             <Route path="/colleges" component={Colleges} />
             <Route path="/colleges/:name" component={CollegeDetail} />
             <Route path="/courses" component={Courses} />
