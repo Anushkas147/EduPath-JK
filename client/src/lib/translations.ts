@@ -104,6 +104,24 @@ export const translations = {
   },
 
   // Landing page
+  heroTitle1: {
+    en: "Career",
+    hi: "करियर",
+    mr: "करिअर",
+    ur: "کیریر",
+    pa: "ਕੈਰੀਅਰ",
+    ks: "کیریر",
+    doi: "करियर"
+  },
+  heroTitle2: {
+    en: "catalyst",
+    hi: "उत्प्रेरक",
+    mr: "उत्प्रेरक",
+    ur: "محرک",
+    pa: "ਉਤਪ੍ਰੇਰਕ",
+    ks: "محرک",
+    doi: "उत्प्रेरक"
+  },
   welcomeTo: {
     en: "Welcome to",
     hi: "में आपका स्वागत है",
